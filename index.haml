@@ -279,36 +279,6 @@
 
 
     .slide
-      %h1 Trema C で書くとこうなる
-      %pre.brush:.ruby
-        :preserve
-          #include &lt;inttypes.h&gt;
-          #include "trema.h"
-
-          static void
-          handle_switch_connected( uint64_t dpid, void *user_data ) {
-            printf( "Hello switch %#" PRIx64 "!", dpid );
-          }
-
-          int
-          main( int argc, char *argv[] ) {
-            # Trema フレームワークを初期化
-            init_trema( &argc, &argv );
-
-            # ハンドラを登録
-            set_switch_connected_handler(
-              handle_switch_connected,
-              NULL
-            );
-
-            # メインループ
-            start_trema();
-
-            return 0;
-          }
-
-
-    .slide
       %h1 OpenFlow SW を接続してみよう!
 
       %p 仮想ネットワークにスイッチを追加
@@ -525,44 +495,6 @@
 
 
     .slide
-      %h1 ベンチマーク (cbench) を実行
-      %p cbench: 一秒あたりの flow_mod 数を計測するベンチマーク
-      %pre.brush:.plain
-        :preserve
-          1   switches: fmods/sec:  10627   total = 10.626989 per ms
-          1   switches: fmods/sec:  8184   total = 8.183992 per ms
-          1   switches: fmods/sec:  7542   total = 7.541992 per ms
-          1   switches: fmods/sec:  7852   total = 7.851992 per ms
-          1   switches: fmods/sec:  8243   total = 8.242992 per ms
-          1   switches: fmods/sec:  7807   total = 7.806977 per ms
-          1   switches: fmods/sec:  8484   total = 8.483992 per ms
-          1   switches: fmods/sec:  8401   total = 8.400992 per ms
-          1   switches: fmods/sec:  8129   total = 8.128992 per ms
-          1   switches: fmods/sec:  7853   total = 7.852788 per ms
-          RESULT: 1 switches 9 tests min/max/avg/stdev = 7541.99/8483.99/8054.97/292.12 responses/s
-      %p 約 8,000 フローセットアップ/秒
-
-
-    .slide
-      %h1 参考: C で書いた場合
-      %p 約 14,000 フローセットアップ/秒
-      %pre.brush:.plain
-        :preserve
-          1   switches: fmods/sec:  8891   total = 8.890991 per ms
-          1   switches: fmods/sec:  14864   total = 14.863985 per ms
-          1   switches: fmods/sec:  14316   total = 14.315986 per ms
-          1   switches: fmods/sec:  14548   total = 14.547985 per ms
-          1   switches: fmods/sec:  14648   total = 14.647956 per ms
-          1   switches: fmods/sec:  13318   total = 13.317987 per ms
-          1   switches: fmods/sec:  14376   total = 14.375986 per ms
-          1   switches: fmods/sec:  13143   total = 13.142987 per ms
-          1   switches: fmods/sec:  14275   total = 14.274986 per ms
-          1   switches: fmods/sec:  14280   total = 14.279986 per ms
-          RESULT: 1 switches 9 tests min/max/avg/stdev = 13142.99/14863.99/14196.43/549.16 responses/s
-      %p 最初は Ruby でサッと書いて、必要に応じて C で書き直すのがおすすめ
-
-
-    .slide
       %h1 サンプルアプリの紹介
       %ul
         %li Trema には大小さまざまなサンプルアプリが付属 (Ruby, C 両方)
@@ -650,11 +582,6 @@
         %li
           Twitter アカウント:
           %a{:href => "http://twitter.com/trema_news"} @trema_news
-
-
-    .slide
-      .vcenter
-        %h2 質問？
 
 
     .layout.nofooter{"data-name" => "alt"}
