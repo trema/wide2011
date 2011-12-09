@@ -1,0 +1,5 @@
+% git submodule init
+% git submodule update
+% watchr watchr.rb
+
+then open index.html with your favorite browser.
